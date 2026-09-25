@@ -1,0 +1,346 @@
+/* // EMBASSY CATERING — src/app/globals.css — Optimized June 8, 2026 */
+
+/* ==========================================================================
+   GLOBAL RESETS & BASE
+   ========================================================================== */
+*, *::before, *::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+html {
+  scroll-behavior: initial; /* Lenis handles smooth scrolling */
+  overflow-x: hidden;
+}
+
+/* Lenis Smooth Scroll Boilerplate */
+html.lenis, html.lenis body {
+  height: auto;
+  width: 100vw;
+}
+.lenis.lenis-smooth {
+  scroll-behavior: auto !important;
+}
+.lenis.lenis-smooth [data-lenis-prevent] {
+  overscroll-behavior: contain;
+}
+.lenis.lenis-stopped {
+  overflow: hidden;
+}
+.lenis.lenis-scrolling iframe {
+  pointer-events: none;
+}
+
+body {
+  background-color: var(--color-white);
+  color: var(--color-text-dark);
+  font-family: var(--font-body);
+  font-weight: 400;
+  line-height: 1.6;
+  overflow-x: hidden;
+}
+
+/* ==========================================================================
+   CUSTOM CURSOR & SPOTLIGHT
+   ========================================================================== */
+.custom-pointer {
+  position: fixed;
+  pointer-events: none;
+  z-index: 99999;
+  border-radius: 50%;
+  transform: translate(-50%, -50%);
+  mix-blend-mode: difference;
+  background: #ffffff;
+  width: 12px;
+  height: 12px;
+}
+
+.cursor-spotlight {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 460px;
+  height: 460px;
+  pointer-events: none;
+  z-index: calc(var(--z-cursor) - 1);
+  transform: translate(-50%, -50%);
+  background: radial-gradient(circle, rgba(177, 18, 38, 0.08) 0%, transparent 65%);
+  transition: transform 0.7s var(--ease-embassy);
+  will-change: transform;
+}
+
+/* Scale cursor when hovering interactive elements */
+a:hover ~ .custom-pointer,
+button:hover ~ .custom-pointer,
+.luxury-btn-red:hover ~ .custom-pointer,
+.luxury-btn-white:hover ~ .custom-pointer {
+  width: 18px;
+  height: 18px;
+}
+
+/* Disable custom cursor on touch devices */
+@media (pointer: coarse) {
+  body { cursor: auto; }
+  .custom-pointer, .cursor-spotlight { display: none !important; }
+  a, button, [class*="btn"] { cursor: pointer !important; }
+}
+
+/* ==========================================================================
+   LAYOUT & CONTAINERS
+   ========================================================================== */
+.container {
+  width: 100%;
+  max-width: var(--container-max);
+  margin-left: auto;
+  margin-right: auto;
+  padding-left: var(--space-3xl);
+  padding-right: var(--space-3xl);
+}
+
+.section {
+  position: relative;
+  padding-top: var(--section-gap-desktop);
+  padding-bottom: var(--section-gap-desktop);
+}
+
+/* ==========================================================================
+   ALTERNATING SECTION PATTERNS
+   ========================================================================== */
+.section-white-red {
+  position: relative;
+  background: var(--section-white-bg) !important;
+  color: var(--color-primary) !important;
+  overflow: hidden;
+}
+
+.section-red-white {
+  position: relative;
+  background: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  overflow: hidden;
+}
+
+.section-white-red::before,
+.section-red-white::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 0;
+}
+
+.section-white-red::before {
+  background: radial-gradient(circle at 35% 45%, rgba(177, 18, 38, 0.08), transparent 55%);
+}
+
+.section-red-white::before {
+  background: radial-gradient(circle at 70% 30%, rgba(255, 255, 255, 0.12), transparent 55%);
+}
+
+.section-white-red > *,
+.section-red-white > * {
+  position: relative;
+  z-index: 1;
+}
+
+/* Ensure typography inherits correct color context */
+.section-white-red h1, .section-white-red h2, .section-white-red h3, .section-white-red p, .section-white-red span, .section-white-red a,
+.section-red-white h1, .section-red-white h2, .section-red-white h3, .section-red-white p, .section-red-white span, .section-red-white a {
+  color: inherit;
+}
+
+/* ==========================================================================
+   GLOBAL INTERACTION & BUTTONS
+   ========================================================================== */
+nav a, header a, button, a[class*="Button"], [class*="button"], [class*="btn"] {
+  cursor: pointer;
+}
+
+.luxury-btn-red {
+  background: var(--gradient-primary) !important;
+  color: var(--color-white) !important;
+  border: 1px solid rgba(255, 255, 255, 0.12) !important;
+  border-radius: 999px; /* Pill shape allowed */
+  transition: all var(--dur-hover) var(--ease-embassy) !important;
+  box-shadow: var(--shadow-red);
+  padding: var(--space-md) var(--space-xl);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.luxury-btn-red:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 20px 58px rgba(177, 18, 38, 0.38);
+}
+
+.luxury-btn-white {
+  background: var(--color-white) !important;
+  color: var(--color-primary) !important;
+  border: 1px solid rgba(201, 168, 76, 0.45) !important;
+  border-radius: 999px; /* Pill shape allowed */
+  transition: all var(--dur-hover) var(--ease-embassy) !important;
+  padding: var(--space-md) var(--space-xl);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+}
+
+.luxury-btn-white:hover {
+  transform: translateY(-3px);
+  border-color: var(--color-gold) !important;
+  box-shadow: 0 8px 24px rgba(201, 168, 76, 0.22);
+}
+
+.brand-intelligence-btn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  height: 46px;
+  padding: 0 28px;
+  background: var(--color-primary) !important;
+  color: var(--color-white) !important;
+  text-decoration: none;
+  border: 1px solid rgba(255, 255, 255, 0.14);
+  border-radius: 999px;
+  font-size: var(--text-eyebrow);
+  font-weight: 500;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+  transition: all var(--dur-hover) var(--ease-embassy);
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.16);
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+}
+
+.brand-intelligence-btn:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 16px 42px rgba(0, 0, 0, 0.22);
+}
+
+/* ==========================================================================
+   SPECIFIC COMPONENT OVERRIDES
+   ========================================================================== */
+/* Navbar Enforcement */
+nav[aria-label="Main navigation"] {
+  background: var(--color-primary) !important;
+  border-bottom: 1px solid rgba(255, 255, 255, 0.10) !important;
+  color: var(--color-white) !important;
+}
+
+/* Footer Fix to prevent Nav bleed */
+#moment-07-departure nav, 
+footer nav {
+  background: transparent !important;
+  border: none !important;
+  box-shadow: none !important;
+  backdrop-filter: none !important;
+  -webkit-backdrop-filter: none !important;
+}
+
+/* Card Geometry (Sharp 0px edges signal architectural heritage luxury) */
+[class*="card"], [class*="Card"], [class*="panel"] {
+  border-radius: 0px !important;
+}
+
+/* Luxury Framing Utility (Simulates physical double-embossed frame matting) */
+.luxury-frame {
+  position: relative;
+  border: var(--border-luxury-gold);
+  padding: var(--space-xl);
+  background: #FFFFFF;
+  border-radius: 0px;
+  transition: all var(--dur-hover) var(--ease-embassy);
+}
+
+.luxury-frame::before {
+  content: '';
+  position: absolute;
+  inset: 4px;
+  border: 1px solid rgba(201, 168, 76, 0.18);
+  pointer-events: none;
+}
+
+.luxury-frame:hover {
+  box-shadow: 0 12px 32px rgba(201, 168, 76, 0.08);
+}
+
+/* Gold Text Utility */
+.color-gold {
+  color: var(--color-gold) !important;
+}
+
+/* Hover Effects */
+.underline-draw::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 100%;
+  height: 1px;
+  background: currentColor;
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform var(--dur-hover) var(--ease-embassy);
+}
+.underline-draw:hover::after {
+  transform: scaleX(1);
+}
+
+/* ==========================================================================
+   HERO MARQUEE
+   ========================================================================== */
+.luxury-marquee-track {
+  display: flex;
+  align-items: center;
+  gap: 44px;
+  width: max-content;
+  padding-left: 44px;
+  animation: luxuryMarquee 18s linear infinite;
+  will-change: transform;
+}
+
+@keyframes luxuryMarquee {
+  0% { transform: translateX(0); }
+  100% { transform: translateX(-50%); }
+}
+
+/* ==========================================================================
+   ACCESSIBILITY & RESPONSIVE
+   ========================================================================== */
+:focus-visible {
+  outline: 2px solid var(--color-primary);
+  outline-offset: 4px;
+}
+
+@media (max-width: 900px) {
+  .brand-intelligence-btn {
+    display: none !important;
+  }
+}
+
+@media (max-width: 768px) {
+  .container {
+    padding-left: var(--space-lg);
+    padding-right: var(--space-lg);
+  }
+  .section {
+    padding-top: var(--section-gap-mobile);
+    padding-bottom: var(--section-gap-mobile);
+  }
+  .responsive-section {
+    padding-top: var(--space-2xl) !important;
+    padding-bottom: var(--space-2xl) !important;
+    padding-left: var(--space-md) !important;
+    padding-right: var(--space-md) !important;
+  }
+  .form-container-card {
+    padding: var(--space-lg) !important;
+    min-width: 0 !important;
+  }
+}
+@keyframes marquee { 0% { transform: translateX(0%); } 100% { transform: translateX(-50%); } }
+.animate-marquee { animation: marquee 25s linear infinite; }

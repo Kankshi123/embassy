@@ -1,0 +1,91 @@
+{
+  "schemaVersion": 2,
+  "generatedAt": "2026-06-24T10:19:00Z",
+  "title": "Design System: The Embassy Catering",
+  "extensions": {
+    "colorMeta": {
+      "primary": {
+        "role": "primary",
+        "displayName": "Imperial Crimson",
+        "canonical": "oklch(48.55% 0.207 25.1)",
+        "tonalRamp": ["#360004", "#5F000A", "#8B0000", "#B11226", "#D7414A", "#FC6E72", "#FF9DA0", "#FFD0D1"]
+      },
+      "secondary": {
+        "role": "secondary",
+        "displayName": "Regal Burgundy",
+        "canonical": "oklch(36.19% 0.174 25.1)",
+        "tonalRamp": ["#200001", "#410002", "#630000", "#8B0000", "#B11226", "#D7414A", "#FC6E72", "#FF9DA0"]
+      },
+      "neutral-bg": {
+        "role": "neutral",
+        "displayName": "Pure White",
+        "canonical": "oklch(100% 0 0)",
+        "tonalRamp": ["#FFFFFF", "#F9F9F9", "#FFF7F7", "#FFFFF0", "#EAEAEA", "#CCCCCC", "#999999", "#666666"]
+      }
+    },
+    "typographyMeta": {
+      "display": { "displayName": "Display", "purpose": "Hero headlines only." },
+      "script": { "displayName": "Script", "purpose": "Accent script titles and details." },
+      "body": { "displayName": "Body", "purpose": "Paragraphs and descriptions." }
+    },
+    "shadows": [
+      { "name": "shadow-deep", "value": "0 32px 80px rgba(0, 0, 0, 0.32)", "purpose": "Diffuse modal and overlay depths." },
+      { "name": "shadow-card", "value": "0 16px 40px rgba(0, 0, 0, 0.12)", "purpose": "Hover card elevations." },
+      { "name": "shadow-red", "value": "0 8px 24px rgba(177, 18, 38, 0.25)", "purpose": "Button glow." }
+    ],
+    "motion": [
+      { "name": "ease-embassy", "value": "cubic-bezier(0.16, 1, 0.3, 1)", "purpose": "Cinematic exponential reveal." },
+      { "name": "ease-heritage", "value": "cubic-bezier(0.25, 0.46, 0.45, 0.94)", "purpose": "Smooth transition." }
+    ],
+    "breakpoints": [
+      { "name": "sm", "value": "640px" },
+      { "name": "md", "value": "768px" },
+      { "name": "lg", "value": "1024px" }
+    ]
+  },
+  "components": [
+    {
+      "name": "Primary Button",
+      "kind": "button",
+      "refersTo": "button-primary",
+      "description": "The main call to action button for premium links.",
+      "html": "<button class=\"ds-btn-primary\">GET STARTED</button>",
+      "css": ".ds-btn-primary { background: linear-gradient(135deg, #B11226 0%, #A30000 45%, #8B0000 100%); color: #FFFFFF; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; padding: 16px 32px; border: 1px solid rgba(255, 255, 255, 0.12); border-radius: 999px; cursor: pointer; transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1); box-shadow: 0 8px 24px rgba(177, 18, 38, 0.25); } .ds-btn-primary:hover { transform: translateY(-3px); box-shadow: 0 20px 58px rgba(177, 18, 38, 0.38); }"
+    },
+    {
+      "name": "Secondary Button",
+      "kind": "button",
+      "refersTo": "button-secondary",
+      "description": "Secondary action button used on contrasting background panels.",
+      "html": "<button class=\"ds-btn-secondary\">VIEW EXPERIENCE</button>",
+      "css": ".ds-btn-secondary { background: #FFFFFF; color: #B11226; font-family: 'Jost', sans-serif; font-size: 11px; font-weight: 500; letter-spacing: 0.26em; text-transform: uppercase; padding: 16px 32px; border: 1px solid rgba(255, 255, 255, 0.55); border-radius: 999px; cursor: pointer; transition: all 0.38s cubic-bezier(0.16, 1, 0.3, 1); } .ds-btn-secondary:hover { transform: translateY(-3px); box-shadow: 0 8px 24px rgba(255, 255, 255, 0.15); }"
+    }
+  ],
+  "narrative": {
+    "northStar": "The Heritage Pavilion",
+    "overview": "A cinematic, editorial-focused visual identity that evokes royal heritage, legacy, and culinary mastery. The aesthetic balance reflects the prestige of Delhi's original luxury caterer since 1948. It pairs generous, breathable spacing with deep, regal crimson red and classical display typography to create an experience that feels majestic, orchestrated, and highly premium.",
+    "keyCharacteristics": [
+      "Orchestrated luxury pacing with wide, deliberate margins.",
+      "High-contrast typography featuring delicate serif headings and elegant script details.",
+      "Majestic crimson branding applied with restraint and purpose.",
+      "Cinematic, smooth scroll interactions (Lenis) and organic motion transitions."
+    ],
+    "rules": [
+      { "name": "The 10% Crimson Rule", "body": "Imperial Crimson is used on <=10% of any given screen area (unless it is a drenched legacy highlight section). Its rarity on the screen preserves its prestige.", "section": "colors" },
+      { "name": "The Contrast Rule", "body": "Body text must never be rendered in low-contrast light grays. It must maintain at least a 4.5:1 contrast ratio against light backgrounds.", "section": "colors" },
+      { "name": "The No-Shouting Rule", "body": "Headings must never use uppercase text unless it is an eyebrow or label. The elegant Cormorant Garamond font relies on its natural serif casing for grace.", "section": "typography" },
+      { "name": "The Hover Elevation Rule", "body": "Shadows are never static on layout elements. They must fade in smoothly during a hover event to signal interactive depth.", "section": "elevation" }
+    ],
+    "dos": [
+      "Do maintain a strict 4.5:1 contrast ratio for all descriptive text.",
+      "Do use text-wrap: balance on all primary display headlines.",
+      "Do respect user preferences for reduced motion by utilizing crossfades instead of complex transforms."
+    ],
+    "donts": [
+      "Don't use side-stripe borders (border-left or border-right > 1px) as colored accents.",
+      "Don't apply gradients to text headers (background-clip: text is prohibited).",
+      "Don't use neon accent colors or tech-focused dark modes.",
+      "Don't animate image elements directly on hover. Animate the background or border container instead."
+    ]
+  }
+}

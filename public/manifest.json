@@ -1,0 +1,58 @@
+{
+  "name": "The Embassy Catering",
+  "short_name": "Embassy",
+  "description": "Delhi's original luxury caterer since 1948. Award-winning multi-cuisine catering for weddings, corporate, and diplomatic events across Delhi NCR.",
+  "start_url": "/",
+  "scope": "/",
+  "display": "standalone",
+  "orientation": "portrait-primary",
+  "background_color": "#B11226",
+  "theme_color": "#B11226",
+  "lang": "en-IN",
+  "dir": "ltr",
+  "categories": ["food", "lifestyle", "business"],
+  "icons": [
+    {
+      "src": "/icons/icon-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "any"
+    },
+    {
+      "src": "/icons/icon-maskable.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
+    }
+  ],
+  "screenshots": [
+    {
+      "src": "/assets/embassy-logo.png",
+      "sizes": "1354x1161",
+      "type": "image/png",
+      "label": "The Embassy Catering — Since 1948"
+    }
+  ],
+  "shortcuts": [
+    {
+      "name": "Plan Your Celebration",
+      "short_name": "Contact",
+      "description": "Begin your enquiry with The Embassy Catering",
+      "url": "/contact",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    },
+    {
+      "name": "Our Legacy",
+      "short_name": "Legacy",
+      "description": "75 years of culinary excellence",
+      "url": "/legacy",
+      "icons": [{ "src": "/icons/icon-192.png", "sizes": "192x192" }]
+    }
+  ]
+}

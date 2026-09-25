@@ -1,0 +1,161 @@
+/* EMBASSY CATERING — src/styles/typography.css — Optimized June 8, 2026 */
+
+/* ==========================================================================
+   GLOBAL SMOOTHING & RESETS
+   All typography must render with absolute clarity and antialiasing
+   ========================================================================== */
+*, *::before, *::after {
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  text-rendering: optimizeLegibility;
+}
+
+h1, h2, h3, h4, h5, h6 {
+  font-family: var(--font-display);
+  font-weight: 600;
+}
+
+p, span, a, li, label, input, textarea, select {
+  font-family: var(--font-body);
+}
+
+/* ==========================================================================
+   DISPLAY & HEADLINES (Cormorant Garamond)
+   Aristocratic restraint. Ceremonial and editorial.
+   ========================================================================== */
+.type-hero {
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: var(--text-hero);
+  line-height: 1.05;
+  letter-spacing: -0.03em;
+}
+
+.type-h1 {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: var(--text-h1);
+  line-height: 1.1;
+  letter-spacing: -0.01em;
+}
+
+.type-h2 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-h2);
+  line-height: 1.15;
+  letter-spacing: -0.01em;
+}
+
+.type-h3 {
+  font-family: var(--font-display);
+  font-weight: 500;
+  font-size: var(--text-h3);
+  line-height: 1.2;
+}
+
+/* ==========================================================================
+   STATISTICAL PROOF (Cormorant Garamond)
+   Used for Moment 04 Scale.
+   ========================================================================== */
+.type-stat {
+  font-family: var(--font-display);
+  font-weight: 600;
+  font-size: clamp(64px, 8vw, 128px);
+  line-height: 1;
+  letter-spacing: -0.02em;
+}
+
+/* ==========================================================================
+   SCRIPT & DECORATIVE (Great Vibes)
+   Used sparingly for moments of ceremony.
+   ========================================================================== */
+.type-script {
+  font-family: var(--font-script);
+  font-weight: 400;
+  font-size: var(--text-script);
+  line-height: 1.1;
+}
+
+/* ==========================================================================
+   BODY, EDITORIAL & UI (Jost)
+   Clean, modern, highly legible at small sizes.
+   ========================================================================== */
+.type-editorial {
+  font-family: var(--font-display);
+  font-weight: 400;
+  font-style: italic;
+  font-size: var(--text-editorial);
+  line-height: 1.5;
+}
+
+.type-body-large {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-body-large);
+  line-height: 1.7;
+}
+
+.type-body {
+  font-family: var(--font-body);
+  font-weight: 400;
+  font-size: var(--text-body);
+  line-height: 1.7;
+}
+
+.type-caption {
+  font-family: var(--font-body);
+  font-weight: 300;
+  font-size: var(--text-caption);
+  line-height: 1.5;
+  letter-spacing: 0.08em;
+}
+
+/* ==========================================================================
+   MICRO-TYPOGRAPHY & UI ELEMENTS
+   Razor-sharp hierarchy for utility text.
+   ========================================================================== */
+.type-nav {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-nav);
+  line-height: 1;
+  letter-spacing: 0.22em;
+  text-transform: uppercase;
+}
+
+.type-button {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: var(--text-button);
+  line-height: 1;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+}
+
+.type-eyebrow {
+  font-family: var(--font-body);
+  font-weight: 500;
+  font-size: 10px;
+  line-height: 1.4;
+  letter-spacing: 0.26em;
+  text-transform: uppercase;
+}
+
+/* ==========================================================================
+   UTILITY COLOUR CLASSES
+   Restricted strictly to the Embassy system.
+   ========================================================================== */
+.color-primary    { color: var(--color-primary); }
+.color-white      { color: var(--color-white); }
+.color-text-dark   { color: var(--color-text-dark); }
+.color-text-muted  { color: var(--color-text-muted); }
+.color-red-deep    { color: var(--color-red-deep); }
+
+/* ==========================================================================
+   SELECTION HIGHLIGHT
+   ========================================================================== */
+::selection {
+  background: var(--color-primary);
+  color: var(--color-white);
+}

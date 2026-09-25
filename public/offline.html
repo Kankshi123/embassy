@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en-IN">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#B11226" />
+  <title>The Embassy Catering — Offline</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,600;1,400;1,600&family=Great+Vibes&family=Jost:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    :root {
+      --red: #B11226; --red-deep: #8B0000; --white: #FFFFFF;
+      --font-display: 'Cormorant Garamond', Georgia, serif;
+      --font-script: 'Great Vibes', cursive;
+      --font-body: 'Jost', sans-serif;
+      --ease: cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    html, body { height: 100%; -webkit-font-smoothing: antialiased; }
+    body {
+      background: linear-gradient(135deg, #8B0000 0%, #B11226 45%, #A30000 100%);
+      color: var(--white); font-family: var(--font-body);
+      display: flex; flex-direction: column; align-items: center;
+      justify-content: center; min-height: 100vh; padding: 40px 24px;
+      text-align: center; overflow: hidden;
+    }
+    body::before {
+      content: ''; position: fixed; inset: 0;
+      background: radial-gradient(circle at 50% 40%, rgba(255,255,255,0.07), transparent 65%);
+      pointer-events: none;
+    }
+    .logo-wrap { margin-bottom: 56px; opacity: 0; transform: translateY(16px); animation: fadeUp 1.2s var(--ease) 0.3s forwards; }
+    .logo-wrap img { width: 96px; height: auto; filter: brightness(0) invert(1); opacity: 0.92; }
+    .script-line { font-family: var(--font-script); font-size: clamp(28px, 6vw, 44px); color: rgba(255,255,255,0.72); line-height: 1; margin-bottom: 28px; opacity: 0; animation: fadeUp 1.2s var(--ease) 0.6s forwards; }
+    h1 { font-family: var(--font-display); font-weight: 600; font-size: clamp(36px, 7vw, 64px); line-height: 1.08; letter-spacing: -0.02em; color: var(--white); margin-bottom: 28px; opacity: 0; animation: fadeUp 1.2s var(--ease) 0.8s forwards; }
+    .divider { width: 40px; height: 1px; background: rgba(255,255,255,0.45); margin: 0 auto 28px; opacity: 0; animation: fadeUp 1s var(--ease) 1s forwards; }
+    p { font-family: var(--font-body); font-weight: 300; font-size: clamp(14px, 2vw, 17px); line-height: 1.8; color: rgba(255,255,255,0.82); max-width: 420px; margin: 0 auto 48px; letter-spacing: 0.01em; opacity: 0; animation: fadeUp 1s var(--ease) 1.1s forwards; }
+    .actions { display: flex; flex-direction: column; align-items: center; gap: 16px; opacity: 0; animation: fadeUp 1s var(--ease) 1.3s forwards; }
+    .btn-retry { display: inline-flex; align-items: center; justify-content: center; height: 54px; padding: 0 44px; background: var(--white); color: var(--red); border: none; font-family: var(--font-body); font-weight: 600; font-size: 11px; letter-spacing: 0.22em; text-transform: uppercase; cursor: pointer; transition: all 0.35s var(--ease); box-shadow: 0 14px 40px rgba(0,0,0,0.22); }
+    .btn-retry:hover { transform: translateY(-3px) scale(1.02); box-shadow: 0 22px 56px rgba(0,0,0,0.32); }
+    .contact-line { font-family: var(--font-body); font-weight: 400; font-size: 11px; letter-spacing: 0.18em; text-transform: uppercase; color: rgba(255,255,255,0.55); }
+    .contact-line a { color: rgba(255,255,255,0.82); text-decoration: none; transition: color 0.3s ease; }
+    .contact-line a:hover { color: var(--white); }
+    .trust-strip { position: fixed; bottom: 0; left: 0; right: 0; height: 44px; background: rgba(0,0,0,0.18); border-top: 1px solid rgba(255,255,255,0.10); display: flex; align-items: center; justify-content: center; gap: 24px; opacity: 0; animation: fadeIn 1s ease 1.8s forwards; }
+    .trust-strip span { font-family: var(--font-body); font-weight: 500; font-size: 9px; letter-spacing: 0.22em; text-transform: uppercase; color: rgba(255,255,255,0.55); white-space: nowrap; }
+    .trust-dot { width: 3px; height: 3px; border-radius: 50%; background: rgba(255,255,255,0.3); flex-shrink: 0; }
+    @keyframes fadeUp { to { opacity: 1; transform: translateY(0); } }
+    @keyframes fadeIn { to { opacity: 1; } }
+    @media (max-width: 480px) { .trust-strip span:not(:first-child):not(:last-child), .trust-dot { display: none; } }
+  </style>
+</head>
+<body>
+  <div class="logo-wrap">
+    <img src="/assets/embassy-logo.png" alt="The Embassy Catering" />
+  </div>
+  <div class="script-line">A moment of patience</div>
+  <h1>You are offline.</h1>
+  <div class="divider"></div>
+  <p>The Embassy Catering requires a connection to serve you fully. Please check your network and try again — we will be here.</p>
+  <div class="actions">
+    <button class="btn-retry" onclick="window.location.reload()">Try Again</button>
+    <p class="contact-line">Or reach us directly &nbsp;·&nbsp; <a href="tel:+911234567890">Call</a> &nbsp;&nbsp; <a href="https://wa.me/911234567890" target="_blank" rel="noopener">WhatsApp</a></p>
+  </div>
+  <div class="trust-strip">
+    <span>Since 1948</span><span class="trust-dot"></span>
+    <span>Delhi NCR</span><span class="trust-dot"></span>
+    <span>10M+ Guests Served</span><span class="trust-dot"></span>
+    <span>Times Food Award</span>
+  </div>
+</body>
+</html>

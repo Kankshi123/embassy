@@ -1,0 +1,114 @@
+/* EMBASSY CATERING — src/styles/variables.css — Final Optimized June 8, 2026 */
+
+:root {
+  /* ==========================================================================
+     COLOR SYSTEM — The Embassy Red & Monochromes (LOCKED)
+     ========================================================================== */
+  --color-primary: #B11226;
+  --color-secondary: #8B0000;
+  --color-red-deep: #8B0000;
+  --color-red-premium: #B11226;
+  --color-red-accent: #A30000;
+
+  --color-white: #FFFFFF;
+  --color-ivory: #FFFFF0;
+  --color-offwhite: #FFF7F7;
+  --color-soft-bg: #F9F9F9;
+
+  --color-gold: #C9A84C;
+  --color-gold-light: rgba(201, 168, 76, 0.12);
+  --color-gold-glow: rgba(201, 168, 76, 0.25);
+
+  --color-text-dark: #1A1A1A;
+  --color-text-muted: rgba(26, 26, 26, 0.65);
+  
+  --color-border: rgba(255, 255, 255, 0.22);
+  --color-border-dark: rgba(26, 26, 26, 0.12);
+  
+  --border-luxury-gold: 1px solid rgba(201, 168, 76, 0.35);
+  --border-luxury-white: 1px solid rgba(255, 255, 255, 0.15);
+  --border-luxury-dark: 1px solid rgba(26, 26, 26, 0.08);
+  --border-double-gold: 3px double rgba(201, 168, 76, 0.60);
+
+  /* ==========================================================================
+     GRADIENTS & OVERLAYS
+     ========================================================================== */
+  --section-red-bg: linear-gradient(135deg, #B11226 0%, #A30000 45%, #8B0000 100%);
+  --section-white-bg: linear-gradient(180deg, #FFFFFF 0%, #FFF7F7 40%, #FFFFFF 100%);
+  --gradient-primary: linear-gradient(135deg, #B11226 0%, #A30000 45%, #8B0000 100%);
+
+  /* ==========================================================================
+     SHADOWS & DEPTH
+     ========================================================================== */
+  --shadow-deep: 0 32px 80px rgba(0, 0, 0, 0.32);
+  --shadow-card: 0 16px 40px rgba(0, 0, 0, 0.12);
+  --shadow-red: 0 8px 24px rgba(177, 18, 38, 0.25);
+  --shadow-white: 0 8px 24px rgba(255, 255, 255, 0.15);
+
+  /* ==========================================================================
+     TYPOGRAPHY STACK
+     ========================================================================== */
+  --font-display: var(--font-display-next, 'Cormorant Garamond', serif);
+  --font-script: var(--font-script-next, 'Great Vibes', cursive);
+  --font-body: var(--font-body-next, 'Jost', sans-serif);
+
+  /* ==========================================================================
+     FLUID TYPOGRAPHY SCALE (Editorial Hierarchy)
+     ========================================================================== */
+  --text-stat: clamp(72px, 10vw, 140px);
+  --text-hero: clamp(48px, 6vw, 92px);
+  --text-h1: clamp(40px, 5vw, 80px);
+  --text-h2: clamp(28px, 3.2vw, 44px);
+  --text-h3: clamp(24px, 2.4vw, 36px);
+  --text-script: clamp(32px, 3.5vw, 56px);
+  --text-editorial: clamp(20px, 1.8vw, 28px);
+  --text-body-large: 18px;
+  --text-body: 16px;
+  --text-caption: 11px;
+  --text-nav: 11px;
+  --text-button: 11px;
+  --text-eyebrow: 10px;
+
+  /* ==========================================================================
+     SPACING RHYTHM (Whitespace is prestige)
+     ========================================================================== */
+  --space-xs: 4px;
+  --space-sm: 8px;
+  --space-md: 16px;
+  --space-lg: 24px;
+  --space-xl: 32px;
+  --space-2xl: 48px;
+  --space-3xl: 64px;
+  --space-4xl: 96px;
+  --space-5xl: 128px;
+  --space-6xl: 192px;
+
+  --section-gap-desktop: var(--space-5xl); /* 128px */
+  --section-gap-mobile: var(--space-2xl);  /* 48px */
+
+  --container-max: 1440px;
+  --reading-max: 640px;
+
+  /* ==========================================================================
+     EASING & DURATIONS (Cinematic reveals, no bounce)
+     ========================================================================== */
+  --dur-major-reveal: 1.5s;
+  --dur-image-reveal: 1.8s;
+  --dur-text-fade: 1s;
+  --dur-hover: 0.38s;
+  --dur-page: 0.8s;
+
+  --ease-embassy: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-heritage: cubic-bezier(0.25, 0.46, 0.45, 0.94);
+  --ease-ceremonial: cubic-bezier(0.65, 0, 0.35, 1);
+
+  /* ==========================================================================
+     Z-INDEX SYSTEM
+     ========================================================================== */
+  --z-base: 0;
+  --z-content: 10;
+  --z-overlay: 100;
+  --z-nav: 200;
+  --z-modal: 300;
+  --z-cursor: 500;
+}

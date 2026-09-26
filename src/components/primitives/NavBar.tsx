@@ -22,18 +22,7 @@ const NAV_LINKS = [
   { label: 'Gallery', href: '/gallery' },
 ];
 
-// Expanded links specifically for the mobile overlay
-const OVERLAY_LINKS = [
-  { label: 'About Us', href: '/legacy' },
-  { label: 'Weddings', href: '/weddings' },
-  { label: 'Events', href: '/events' },
-  { label: 'Menu', href: '/menu' },
-  { label: 'Gallery', href: '/gallery' },
-  { label: 'Blog', href: '/journal' },
-  { label: 'Contact', href: '/contact' },
-  { label: 'Corporate Events', href: '/events/corporate' },
-  { label: 'Social Events', href: '/events/social' },
-];
+// Removed OVERLAY_LINKS as we will use NAV_LINKS instead
 
 export default function NavBar() {
   const [scrolled, setScrolled] = useState(false);
@@ -45,7 +34,7 @@ export default function NavBar() {
   useEffect(() => {
     const timer = setTimeout(() => {
       setLogoSettled(true);
-    }, 1700);
+    }, 100); // Reduced from 1700 to make loading much faster
     return () => clearTimeout(timer);
   }, []);
 
@@ -101,7 +90,7 @@ export default function NavBar() {
             transformOrigin: 'center',
             textDecoration: 'none',
             zIndex: 20,
-            transition: 'left 1.2s var(--ease-embassy), transform 1.2s var(--ease-embassy)',
+            transition: 'left 0.5s var(--ease-embassy), transform 0.5s var(--ease-embassy)', // faster animation
           } as React.CSSProperties}
         >
           <BrandMark variant="light" size="sm" />
@@ -120,7 +109,7 @@ export default function NavBar() {
             paddingLeft: '180px',
             opacity: logoSettled ? 1 : 0,
             transform: logoSettled ? 'translateY(0)' : 'translateY(10px)',
-            transition: 'opacity 0.8s var(--ease-heritage) 0.7s, transform 0.8s var(--ease-heritage) 0.7s',
+            transition: 'opacity 0.4s var(--ease-heritage) 0.2s, transform 0.4s var(--ease-heritage) 0.2s', // much faster
           } as React.CSSProperties}
         >
           {NAV_LINKS.map((link) => (
@@ -218,7 +207,7 @@ export default function NavBar() {
             marginLeft: 'auto',
             cursor: 'pointer',
             opacity: logoSettled ? 1 : 0,
-            transition: 'opacity 0.8s var(--ease-heritage) 0.7s',
+            transition: 'opacity 0.4s var(--ease-heritage) 0.2s', // faster
           } as React.CSSProperties}
         >
           {[0, 1, 2].map((i) => (
@@ -239,7 +228,7 @@ export default function NavBar() {
       <NavOverlay
         open={overlayOpen}
         onClose={() => setOverlayOpen(false)}
-        links={OVERLAY_LINKS}
+        links={NAV_LINKS}
         pathname={pathname}
       />
 
@@ -361,9 +350,18 @@ function NavOverlay({
 }: {
   open: boolean;
   onClose: () => void;
-  links: { label: string; href: string }[];
+  links: typeof NAV_LINKS;
   pathname: string;
 }) {
+  const [expandedDropdown, setExpandedDropdown] = useState<string | null>(null);
+
+  // Reset expanded dropdown when overlay closes
+  useEffect(() => {
+    if (!open) {
+      setTimeout(() => setExpandedDropdown(null), 300);
+    }
+  }, [open]);
+
   return (
     <div
       style={{
@@ -379,6 +377,7 @@ function NavOverlay({
         opacity: open ? 1 : 0,
         pointerEvents: open ? 'all' : 'none',
         transition: 'opacity 0.6s var(--ease-embassy)',
+        overflowY: 'auto', // in case content overflows on small screens
       } as React.CSSProperties}
     >
       <button
@@ -395,9 +394,9 @@ function NavOverlay({
           fontFamily: 'var(--font-body)',
           fontWeight: 300,
           lineHeight: 1,
-          padding: '12px', // Touch target expansion
-          minWidth: '44px', // Touch target minimum
-          minHeight: '44px', // Touch target minimum
+          padding: '12px',
+          minWidth: '44px',
+          minHeight: '44px',
           display: 'flex',
           alignItems: 'center',
           justifyContent: 'center',
@@ -408,23 +407,87 @@ function NavOverlay({
       </button>
 
       {links.map((link, i) => (
-        <Link
-          key={link.href}
-          href={link.href}
-          onClick={onClose}
-          style={{
-            fontFamily: 'var(--font-display)',
-            fontSize: 'clamp(36px, 10vw, 48px)',
-            fontWeight: link.href === pathname ? 700 : 400,
-            color: link.href === pathname ? 'var(--color-white)' : 'rgba(255,255,255,0.85)',
-            textDecoration: 'none',
-            opacity: open ? 1 : 0,
-            transform: open ? 'translateY(0)' : 'translateY(24px)', // Slide entrance animation
-            transition: `all 0.6s var(--ease-embassy) ${open ? 0.2 + i * 0.08 : 0}s`,
-          } as React.CSSProperties}
-        >
-          {link.label}
-        </Link>
+        <div key={link.label} style={{ display: 'flex', flexDirection: 'column', alignItems: 'center' }}>
+          {link.dropdown ? (
+            <>
+              <button
+                onClick={() => setExpandedDropdown(expandedDropdown === link.label ? null : link.label)}
+                style={{
+                  background: 'none',
+                  border: 'none',
+                  cursor: 'pointer',
+                  fontFamily: 'var(--font-display)',
+                  fontSize: 'clamp(32px, 8vw, 40px)',
+                  fontWeight: 400,
+                  color: 'rgba(255,255,255,0.85)',
+                  opacity: open ? 1 : 0,
+                  transform: open ? 'translateY(0)' : 'translateY(24px)',
+                  transition: `all 0.6s var(--ease-embassy) ${open ? 0.2 + i * 0.08 : 0}s`,
+                  display: 'flex',
+                  alignItems: 'center',
+                  gap: '12px',
+                }}
+              >
+                {link.label}
+                <span
+                  style={{
+                    fontSize: '20px',
+                    transform: expandedDropdown === link.label ? 'rotate(180deg)' : 'rotate(0deg)',
+                    transition: 'transform 0.3s ease',
+                  }}
+                >
+                  ▼
+                </span>
+              </button>
+              
+              <div
+                style={{
+                  maxHeight: expandedDropdown === link.label ? '400px' : '0px',
+                  overflow: 'hidden',
+                  transition: 'max-height 0.4s ease, margin-top 0.4s ease',
+                  display: 'flex',
+                  flexDirection: 'column',
+                  alignItems: 'center',
+                  gap: '16px',
+                  marginTop: expandedDropdown === link.label ? '20px' : '0px',
+                }}
+              >
+                {link.dropdown.map((drop) => (
+                  <Link
+                    key={drop.href}
+                    href={drop.href}
+                    onClick={onClose}
+                    style={{
+                      fontFamily: 'var(--font-display)',
+                      fontSize: 'clamp(20px, 5vw, 24px)',
+                      color: 'rgba(255,255,255,0.7)',
+                      textDecoration: 'none',
+                    }}
+                  >
+                    {drop.label}
+                  </Link>
+                ))}
+              </div>
+            </>
+          ) : (
+            <Link
+              href={link.href}
+              onClick={onClose}
+              style={{
+                fontFamily: 'var(--font-display)',
+                fontSize: 'clamp(32px, 8vw, 40px)',
+                fontWeight: link.href === pathname ? 700 : 400,
+                color: link.href === pathname ? 'var(--color-white)' : 'rgba(255,255,255,0.85)',
+                textDecoration: 'none',
+                opacity: open ? 1 : 0,
+                transform: open ? 'translateY(0)' : 'translateY(24px)',
+                transition: `all 0.6s var(--ease-embassy) ${open ? 0.2 + i * 0.08 : 0}s`,
+              } as React.CSSProperties}
+            >
+              {link.label}
+            </Link>
+          )}
+        </div>
       ))}
 
       {/* MOBILE WHATSAPP CTA */}
